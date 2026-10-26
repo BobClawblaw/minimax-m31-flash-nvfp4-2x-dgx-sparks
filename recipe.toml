@@ -24,8 +24,8 @@ build_dir = "~/.cache/minimax-m31-spark"
 
 [cluster]
 head = ""                        # empty: this machine (rank 0)
-worker = "CHANGE-ME"             # ssh login of rank 1, e.g. user@10.0.0.30
-master_addr = "CHANGE-ME"        # rank 0's address on the ConnectX-7 link, e.g. 10.0.0.20
+worker = "CHANGE-ME"             # ssh login of rank 1 over the ConnectX-7 link
+master_addr = "CHANGE-ME"        # rank 0's address on the ConnectX-7 link
 nccl_port = 29581
 iface = "enp1s0f1np1"            # NCCL_SOCKET_IFNAME on both nodes
 hca = "rocep1s0f1,roceP2p1s0f1"  # NCCL_IB_HCA

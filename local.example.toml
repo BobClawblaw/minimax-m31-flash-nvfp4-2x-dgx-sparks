@@ -1,7 +1,7 @@
 # Copy to local.toml and set what differs on your pair (any key of recipe.toml, under its table).
 [cluster]
-worker = "user@10.0.0.30"
-master_addr = "10.0.0.20"
+worker = "CHANGE-ME"         # ssh login of rank 1 over the ConnectX-7 link
+master_addr = "CHANGE-ME"    # rank 0's address on that link
 
 [engine]
 zig = "~/tools/zig-aarch64-linux-0.17.0/zig"
