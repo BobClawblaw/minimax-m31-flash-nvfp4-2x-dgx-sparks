@@ -1,0 +1,8 @@
+# Copy to local.toml and set what differs on your pair (any key of recipe.toml, under its table).
+[cluster]
+worker = "user@10.0.0.30"
+master_addr = "10.0.0.20"
+
+[engine]
+zig = "~/tools/zig-aarch64-linux-0.17.0/zig"
+xgrammar = "~/src/xgrammar-v0.2.8"

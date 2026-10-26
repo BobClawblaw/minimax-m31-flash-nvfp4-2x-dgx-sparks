@@ -1,0 +1,48 @@
+# The recipe's defaults. `local.toml` next to this file overrides them for one pair of Sparks (copy local.example.toml);
+# an environment variable of the same name in upper case overrides both (CONTEXT=16384 python3 -m spark up).
+
+[model]
+# MiniMax's release: MXFP8 projections, NVFP4 routed experts, a DSpark drafter, a vision tower
+source_repo = "MiniMaxAI/MiniMax-M3.1-Flash"
+source_revision = "54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e"
+served_name = "MiniMax-M3.1-Flash"
+source_dir = ""                  # empty: ~/models/MiniMax-M3.1-Flash (the release as downloaded)
+model_dir = ""                   # empty: ~/models/MiniMax-M3.1-Flash-nvfp4-mix (the converted folder, on both nodes)
+# the MoE layers whose experts stay NVFP4 as released; the other 42 take the 3-bit refit (README: the mix)
+nvfp4_layers = "20-29,31,49,52,57,59"
+
+[engine]
+# TensorFold's native CUDA engine: a worktree of tensorfold_src at tensorfold_sha, built by `python3 -m spark build`
+tensorfold_src = "~/TensorFold"
+tensorfold_repo = "https://github.com/BobClawblaw/TensorFold"
+tensorfold_branch = "minimax-m3-cuda"
+tensorfold_sha = "1d559dd44ead55385ec8913ae79731c3e69332cc"           # the pinned commit (README: the engine)
+binary_dir = ""                  # a built zig-out/native to serve instead (development; the harness records its hash)
+zig = "zig"                      # Zig 0.17.0
+xgrammar = ""                    # an xgrammar v0.2.8 checkout with submodules (structured output, forced tools)
+build_dir = "~/.cache/minimax-m31-spark"
+
+[cluster]
+head = ""                        # empty: this machine (rank 0)
+worker = "CHANGE-ME"             # ssh login of rank 1, e.g. user@10.0.0.30
+master_addr = "CHANGE-ME"        # rank 0's address on the ConnectX-7 link, e.g. 10.0.0.20
+nccl_port = 29581
+iface = "enp1s0f1np1"            # NCCL_SOCKET_IFNAME on both nodes
+hca = "rocep1s0f1,roceP2p1s0f1"  # NCCL_IB_HCA
+nccl_channels = 16
+
+[serve]
+host = "0.0.0.0"
+port = 8897
+context = 32768                  # a stream's window
+parallel = 2                     # streams decoded together
+drafts = true                    # the release's DSpark head drafts each stream's block (greedy replies are identical with drafts off)
+vision = true
+vision_image_tokens = 4096       # image tokens a request holds in all (an image takes at most 576)
+prompt_cache_gib = 3             # kept prompt states, at 2,048-token chunk starts
+max_tokens = 32768
+thinking = false                 # the template's thinking block off by default; a request's chat_template_kwargs turns it on
+thinking_budget = 0              # reasoning tokens before the answer is forced (0: the engine's default)
+reserve_gib = 3                  # TENSORFOLD_MEMORY_RESERVE_GIB on each rank
+api_key = ""
+extra_args = ""
