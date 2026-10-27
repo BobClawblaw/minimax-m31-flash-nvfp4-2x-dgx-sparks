@@ -1,0 +1,122 @@
+[
+ {
+  "q": "A train leaves at 9:40 and arrives at 13:15. How many minutes is the trip?",
+  "want": 215,
+  "status": 200,
+  "got": 215,
+  "finish": "stop",
+  "reasoning_chars": 108,
+  "leak": false,
+  "tokens": 115,
+  "text": "The trip runs from 9:40 to 13:15.\n\n- 9:40 \u2192 12:40 = 3 hours = 180 minutes\n- 12:40 \u2192 13:15 = 35 minutes\n\nTotal: 180 + 35 = 215 minutes\n\nAnswer: 215",
+  "error": null
+ },
+ {
+  "q": "A shop sells pens at 3 for $2. How many dollars do 27 pens cost?",
+  "want": 18,
+  "status": 200,
+  "got": 18,
+  "finish": "stop",
+  "reasoning_chars": 49,
+  "leak": false,
+  "tokens": 60,
+  "text": "27 pens \u00f7 3 pens per group = 9 groups. Each group costs $2, so 9 \u00d7 $2 = $18.\n\nAnswer: 18",
+  "error": null
+ },
+ {
+  "q": "Tom has 5 times as many marbles as Ann. Together they have 84. How many does Tom have?",
+  "want": 70,
+  "status": 200,
+  "got": 70,
+  "finish": "stop",
+  "reasoning_chars": 55,
+  "leak": false,
+  "tokens": 91,
+  "text": "Let Ann have x marbles. Tom has 5x.\n\nx + 5x = 84\n6x = 84\nx = 14\n\nTom has 5 \u00d7 14 = 70 marbles.\n\nCheck: 14 + 70 = 84 \u2713\n\nAnswer: 70",
+  "error": null
+ },
+ {
+  "q": "A rectangle is 3 times as long as it is wide and its perimeter is 64 cm. What is its area in square cm?",
+  "want": 192,
+  "status": 200,
+  "got": 192,
+  "finish": "stop",
+  "reasoning_chars": 88,
+  "leak": false,
+  "tokens": 120,
+  "text": "Let the width be w cm, so the length is 3w cm.\n\nPerimeter: 2(w + 3w) = 64 \u2192 8w = 64 \u2192 w = 8 cm, length = 24 cm.\n\nArea = 8 \u00d7 24 = 192 square cm.\n\nAnswer: 192",
+  "error": null
+ },
+ {
+  "q": "What is the sum of the first 20 odd numbers?",
+  "want": 400,
+  "status": 200,
+  "got": 400,
+  "finish": "stop",
+  "reasoning_chars": 176,
+  "leak": false,
+  "tokens": 137,
+  "text": "The first 20 odd numbers are 1, 3, 5, ..., 39.\n\nThe sum of the first n odd numbers equals n\u00b2. So the sum = 20\u00b2 = 400.\n\nCheck: (1 + 39) \u00d7 20 / 2 = 40 \u00d7 10 = 400. \u2713\n\nAnswer: 400",
+  "error": null
+ },
+ {
+  "q": "A tank fills at 12 litres a minute and leaks 4 litres a minute. How many minutes to fill 200 litres?",
+  "want": 25,
+  "status": 200,
+  "got": 25,
+  "finish": "stop",
+  "reasoning_chars": 296,
+  "leak": false,
+  "tokens": 146,
+  "text": "The net filling rate is 12 \u2212 4 = 8 litres per minute.\n\nTime = 200 \u00f7 8 = 25 minutes.\n\nAnswer: 25",
+  "error": null
+ },
+ {
+  "q": "If 7 workers build 7 walls in 7 days, how many days do 14 workers take to build 14 walls?",
+  "want": 7,
+  "status": 200,
+  "got": 7,
+  "finish": "stop",
+  "reasoning_chars": 276,
+  "leak": false,
+  "tokens": 141,
+  "text": "Each worker builds 7 walls in 7 days, i.e., 1 wall per worker per week. Doubling the workers doubles the output rate, so 14 workers build 14 walls in the same time.\n\nAnswer: 7",
+  "error": null
+ },
+ {
+  "q": "A book costs $40 after a 20% discount. What was its price in dollars before the discount?",
+  "want": 50,
+  "status": 200,
+  "got": 50,
+  "finish": "stop",
+  "reasoning_chars": 463,
+  "leak": false,
+  "tokens": 191,
+  "text": "After a 20% discount, the price is 80% of the original price.\n\nLet the original price be $x:\n0.8x = 40\nx = 40 / 0.8 = 50\n\nAnswer: 50",
+  "error": null
+ },
+ {
+  "q": "How many integers from 1 to 100 are divisible by 3 or 5?",
+  "want": 47,
+  "status": 200,
+  "got": 47,
+  "finish": "stop",
+  "reasoning_chars": 193,
+  "leak": false,
+  "tokens": 206,
+  "text": "**Counting multiples of 3:** \u230a100/3\u230b = 33 (3, 6, ..., 99)\n\n**Counting multiples of 5:** \u230a100/5\u230b = 20 (5, 10, ..., 100)\n\n**Subtract overlap:** Multiples of 15 were counted twice: \u230a100/15\u230b = 6 (15, 30, 45, 60, 75, 90)\n\nBy inclusion\u2013exclusion: 33 + 20 \u2212 6 = 47\n\nAnswer: 47",
+  "error": null
+ },
+ {
+  "q": "A clock gains 3 minutes every hour. How many minutes ahead is it after 2 days?",
+  "want": 144,
+  "status": 200,
+  "got": 144,
+  "finish": "stop",
+  "reasoning_chars": 309,
+  "leak": false,
+  "tokens": 145,
+  "text": "A clock that gains 3 minutes every hour runs 63 minutes for each 60 real minutes.\n\n- 2 days = 48 hours\n- Time gained = 3 minutes \u00d7 48 hours = 144 minutes\n\nAnswer: 144",
+  "error": null
+ }
+]

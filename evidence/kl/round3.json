@@ -1,0 +1,179 @@
+{
+ "meta": {
+  "model_dir": "MiniMax-M3.1-Flash-mix-dev (the release with 3-bit experts beside the NVFP4 ones on every MoE layer: minimax_m3_nvfp4_mix.py --keep-nvfp4)",
+  "tokens": 2406,
+  "tail_rows": 1000,
+  "layers": 60,
+  "wall_s": 884.5261731147766,
+  "sanity": {
+   "mxfp8": 0.026554381474852562,
+   "nvfp4": 0.09507466107606888,
+   "nvfp4_mse": 0.08601957559585571,
+   "nvfp4_grid_roundtrip_maxerr": 0.0,
+   "nvfp4_mse_grid_roundtrip_maxerr": 0.0,
+   "nvfp4_mse_never_worse": true,
+   "mxfp8_pow2_roundtrip_maxerr": 0.0
+  },
+  "nvfp4_layers": [
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   31,
+   49,
+   52,
+   57,
+   59
+  ],
+  "affine3_layers": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   30,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38,
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46,
+   47,
+   48,
+   50,
+   51,
+   53,
+   54,
+   55,
+   56,
+   58
+  ],
+  "variants": {
+   "exact": {
+    "experts": "nv",
+    "nvfp4_dense": [],
+    "head": "bf16"
+   },
+   "served": {
+    "experts": "served",
+    "nvfp4_dense": [],
+    "head": "bf16"
+   },
+   "served+head8": {
+    "experts": "served",
+    "nvfp4_dense": [],
+    "head": "mx8"
+   },
+   "served+head8+all4": {
+    "experts": "served",
+    "nvfp4_dense": [
+     "q:mse",
+     "k:mse",
+     "v:mse",
+     "iq:mse",
+     "ik:mse",
+     "o:mse",
+     "gate_w:mse",
+     "up_w:mse",
+     "down_w:mse",
+     "s_gate:mse",
+     "s_up:mse",
+     "s_down:mse"
+    ],
+    "head": "mx8"
+   },
+   "served+head8+qkv4+mlp4": {
+    "experts": "served",
+    "nvfp4_dense": [
+     "q:mse",
+     "k:mse",
+     "v:mse",
+     "iq:mse",
+     "ik:mse",
+     "gate_w:mse",
+     "up_w:mse",
+     "down_w:mse",
+     "s_gate:mse",
+     "s_up:mse",
+     "s_down:mse"
+    ],
+    "head": "mx8"
+   }
+  }
+ },
+ "metrics": {
+  "exact": {
+   "kl_exact_all": 0.0,
+   "top1_all": 100.0,
+   "kl_exact_all_p99": 0.0,
+   "kl_exact_tail": 0.0,
+   "top1_tail": 100.0,
+   "kl_exact_tail_p99": 0.0
+  },
+  "served": {
+   "kl_exact_all": 0.1054549291729927,
+   "top1_all": 88.57024312019348,
+   "kl_exact_all_p99": 1.0808961391448975,
+   "kl_exact_tail": 0.1204286590218544,
+   "top1_tail": 88.90000581741333,
+   "kl_exact_tail_p99": 1.162294864654541
+  },
+  "served+head8": {
+   "kl_exact_all": 0.10621076822280884,
+   "top1_all": 88.19617629051208,
+   "kl_served_all": 0.0009289245936088264,
+   "kl_exact_all_p99": 1.0923347473144531,
+   "kl_exact_tail": 0.12155134230852127,
+   "top1_tail": 88.40000629425049,
+   "kl_served_tail": 0.0007714656530879438,
+   "kl_exact_tail_p99": 1.1569658517837524
+  },
+  "served+head8+all4": {
+   "kl_exact_all": 0.14317838847637177,
+   "top1_all": 86.86617016792297,
+   "kl_served_all": 0.07108618319034576,
+   "kl_exact_all_p99": 1.7650904655456543,
+   "kl_exact_tail": 0.1490601897239685,
+   "top1_tail": 87.40000128746033,
+   "kl_served_tail": 0.07622332870960236,
+   "kl_exact_tail_p99": 1.8666126728057861
+  },
+  "served+head8+qkv4+mlp4": {
+   "kl_exact_all": 0.12107683718204498,
+   "top1_all": 87.57273554801941,
+   "kl_served_all": 0.04819583147764206,
+   "kl_exact_all_p99": 1.537275791168213,
+   "kl_exact_tail": 0.13141077756881714,
+   "top1_tail": 88.00000548362732,
+   "kl_served_tail": 0.050726063549518585,
+   "kl_exact_tail_p99": 1.65348482131958
+  }
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "head": {
+  "output": "total        used        free      shared  buff/cache   available\nMem:     130594086912 119753474048  7952576512   495763456  4487049216 10840612864\nSwap:    17179865088  3928006656 13251858432",
+  "available_gib": 10.1,
+  "exit": 0
+ },
+ "worker": {
+  "output": "total        used        free      shared  buff/cache   available\nMem:     130661142528 120217018368  6715899904   445878272  5228699648 10444124160\nSwap:    42949664768   414990336 42534674432",
+  "available_gib": 9.7,
+  "exit": 0
+ }
+}

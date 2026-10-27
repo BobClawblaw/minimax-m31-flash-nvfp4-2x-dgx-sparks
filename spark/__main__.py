@@ -43,7 +43,8 @@ def convert(s):
     conv = s.worktree / "tools/zig/minimax_m3_nvfp4_mix.py"
     if not conv.exists():
         sys.exit(f"{conv} is missing: run `python3 -m spark build` first (the converter ships with the engine)")
-    sh(f"python3 -I {conv} {s.source} {s.model} --nvfp4-layers {s.nvfp4_layers} --revision {s.source_revision}")
+    fp4 = " --dense-fp4" if s.dense_fp4 else ""
+    sh(f"python3 -I {conv} {s.source} {s.model} --nvfp4-layers {s.nvfp4_layers} --revision {s.source_revision}{fp4}")
     sh(f"python3 -I {conv} --check {s.model}")
     on_worker(s, f"mkdir -p {s.model}")
     sh(f"rsync -a --info=progress2 {s.model}/ {s.worker}:{s.model}/")

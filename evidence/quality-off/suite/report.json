@@ -1,0 +1,586 @@
+{
+ "url": "http://127.0.0.1:8897",
+ "model": "MiniMax-M3.1-Flash",
+ "results": [
+  {
+   "name": "drafts",
+   "score": 1.0,
+   "cases": 12,
+   "passed": 12,
+   "seconds": 130.46049809455872,
+   "notes": [
+    "drafted 30 tok/s vs undrafted 21 tok/s"
+   ],
+   "details": {
+    "drafted": [
+     {
+      "prompt": "Explain, in about 150 words, why the sky is blue and sunsets are red.",
+      "sha": "db0dd7a65eb2",
+      "tokens": 137,
+      "tok_s": 26.555724072918146,
+      "text": "The sky looks blue because air molecules scatter short (blue) wavelengths of sunlight much more strongly than long (red) ones\u2014a process called Rayleigh scattering. Blue light bounces around in all directions, so it reaches your eyes from anywhere in the sky, while red light travels more directly.\n\nSunsets appear red for the opposite reason. Near the horizon, sunlight passes through a much longer stretch of atmosphere. Most of the blue light gets scattered away before it reaches you, leaving the longer red and orange wavelengths to arrive straight from the sun. The same effect makes the sun itself look reddish at low elevations, and the scattered remnants of that blue light tint the surrounding sky pink and purple."
+     },
+     {
+      "prompt": "Write a Python function that parses an ISO-8601 date string and returns the day of the week, with a docstring and two examples.",
+      "sha": "a6a8a4826334",
+      "tokens": 300,
+      "tok_s": 38.625479819261926,
+      "text": "I'll write a function that parses an ISO-8601 date string and returns the day of the week.\n\n```python\nfrom datetime import date\n\n\ndef day_of_week(iso_date: str) -> str:\n    \"\"\"\n    Parse an ISO-8601 date string and return the name of its day of the week.\n\n    Accepts dates in the common ISO-8601 forms: \"YYYY-MM-DD\", \"YYYYMMDD\",\n    and \"YYYY-MM\" / \"YYYYMM\" (which default to the first day of the period).\n    A full ISO-8601 datetime string (e.g. \"2024-03-15T10:30:00\") is also\n    accepted; only the date portion is used.\n\n    Args:\n        iso_date: A string containing an ISO-8601 date.\n\n    Returns:\n        The English name of the weekday, e.g. \"Friday\".\n\n    Raises:\n        ValueError: If the string is not a valid ISO-8601 date.\n\n    Examples:\n        >>> day_of_week(\"2024-03-15\")\n        'Friday'\n        >>> day_of_week(\"20231225\")\n        'Monday'\n    \"\"\"\n    # fromisoformat handles \"YYYY-MM-DD\" and, on Python 3.11+,\n    # most other ISO-8601 variants including \"YYYYMMDD\".\n    try:\n        parsed = date.fromisoformat(iso_date)\n    except ValueError:\n        # Fall back"
+     },
+     {
+      "prompt": "List five differences between TCP and UDP as a numbered list, one sentence each.",
+      "sha": "e0711e34f645",
+      "tokens": 174,
+      "tok_s": 28.626034739780895,
+      "text": "1. TCP is connection-oriented, requiring a handshake (SYN/ACK) before data transfer, while UDP is connectionless and sends data immediately without establishing a connection.\n\n2. TCP guarantees reliable, ordered delivery through acknowledgments and retransmissions, whereas UDP makes no delivery guarantees and may lose or reorder packets.\n\n3. TCP provides flow control and congestion control (e.g., sliding windows), while UDP offers neither, sending data as fast as the application requests.\n\n4. TCP uses a 20-byte header (plus options) with fields like sequence numbers and checksums, whereas UDP uses a minimal 8-byte header with only source/destination ports, length, and checksum.\n\n5. TCP is suited for applications like web browsing and email that need correctness, while UDP is favored for real-time or latency-sensitive uses like video streaming, gaming, and DNS lookups."
+     },
+     {
+      "prompt": "Translate to French: 'The committee postponed the vote until the engineers had finished their report.'",
+      "sha": "f46510fe1149",
+      "tokens": 19,
+      "tok_s": 19.593144196509915,
+      "text": "Le comit\u00e9 a report\u00e9 le vote jusqu'\u00e0 ce que les ing\u00e9nieurs aient termin\u00e9 leur rapport."
+     },
+     {
+      "prompt": "Write a bash script that renames every .jpeg file in a directory tree to .jpg, skipping files whose target name exists, and prints a summary.",
+      "sha": "d002829f1440",
+      "tokens": 300,
+      "tok_s": 39.55490851319869,
+      "text": "I'll write a bash script for this. Let me think through the requirements:\n\n- Find every `.jpeg` file in a directory tree (recursively)\n- Rename to `.jpg`\n- Skip files whose target name already exists\n- Print a summary\n\nLet me write a robust version:\n\n```bash\n#!/usr/bin/env bash\n#\n# rename-jpeg-to-jpg.sh \u2014 Recursively rename .jpeg files to .jpg in a directory tree.\n#\n# Files whose target name already exists are skipped (not overwritten).\n# A summary of renamed / skipped counts is printed at the end.\n#\n# Usage: ./rename-jpeg-to-jpg.sh [DIRECTORY]\n\nset -uo pipefail\n\ntarget_dir=\"${1:-.}\"\n\nif [[ ! -d \"$target_dir\" ]]; then\n    echo \"Error: '$target_dir' is not a directory.\" >&2\n    exit 1\nfi\n\nrenamed=0\nskipped=0\nerrors=0\n\nwhile IFS= read -r -d '' src; do\n    dest=\"${src%.jpeg}.jpg\"\n\n    # Skip if the destination already exists (file, dir, symlink, etc.)\n    if [[ -e \"$dest\" || -L \"$dest\" ]]; then\n        echo \"SKIP (exists): $dest\"\n        ((skipped++))\n        continue\n    fi\n\n    if mv -- \"$src\" \"$dest\"; then\n        echo \"RENAMED: $src -> $"
+     },
+     {
+      "prompt": "A train leaves at 09:40 and arrives at 14:05 after a 25-minute stop. What is its moving time? Show the steps briefly.",
+      "sha": "75cb796aa5a6",
+      "tokens": 101,
+      "tok_s": 34.0051380207968,
+      "text": "**Moving time = 3 hours 40 minutes**\n\nSteps:\n1. Total elapsed: 09:40 \u2192 14:05 = 4 h 25 min\n2. Subtract the stop: 4 h 25 min \u2212 25 min = 4 h 00 min\n\nWait \u2014 let me redo that: 4 h 25 min \u2212 25 min = 4 h 0 min.\n\n**Moving time = 4 hours 0 minutes** (240 minutes)."
+     },
+     {
+      "prompt": "Summarize the plot of a heist film you invent, in exactly four sentences.",
+      "sha": "4e3a76799c30",
+      "tokens": 295,
+      "tok_s": 23.535086247968596,
+      "text": "In *The Ninth Furlong*, a disgraced race jockey-turned-fence assembles a crew of four unlikely allies\u2014a bankrupt casino dealer, a teenage pickpocket with a photographic memory, a retired safecracker with a tremor, and a corrupt police detective\u2014to rob the vault of a private bank in Monte Carlo. Their plan hinges on a fake charity gala, a forged invitation, and a seven-minute window during which the vault's alarm system is offline for a scheduled \"maintenance\" that the crew themselves arranged by planting false work orders. The heist proceeds flawlessly until the eleventh minute, when the teenage pickpocket notices that the vault contains no cash at all\u2014only a ledger proving that the bank's money has been laundered through a network of shell companies, and the crew realizes they've been set up as patsies for a much larger frame job. Cornered in the vault with the alarm about to sound, the crew must choose between fleeing with the incriminating ledger, which would expose them to prosecution, or leaving empty-handed and keeping their secrets, and the jockey makes the call by ordering the safe to be cracked open and the ledger burned, sacrificing the only evidence that could clear them. The film ends with the crew splitting up and going their separate ways, the detective quietly filing the case as \"no evidence found,\" and the jockey returning to the racetrack to watch a horse lose, betting everything on the next one."
+     },
+     {
+      "prompt": "Give a JSON array of three objects, each with keys city, country and population (integer), for three large Asian cities.",
+      "sha": "ecad46549eb2",
+      "tokens": 89,
+      "tok_s": 35.44597592072023,
+      "text": "```json\n[\n  {\n    \"city\": \"Tokyo\",\n    \"country\": \"Japan\",\n    \"population\": 13960000\n  },\n  {\n    \"city\": \"Delhi\",\n    \"country\": \"India\",\n    \"population\": 32941000\n  },\n  {\n    \"city\": \"Shanghai\",\n    \"country\": \"China\",\n    \"population\": 27058000\n  }\n]\n```"
+     },
+     {
+      "prompt": "Rewrite this sentence in the passive voice and then in the imperative: 'The engineer calibrates the sensor every morning.'",
+      "sha": "683625c7bc99",
+      "tokens": 27,
+      "tok_s": 26.25147870041585,
+      "text": "**Passive voice:** The sensor is calibrated by the engineer every morning.\n\n**Imperative:** Calibrate the sensor every morning."
+     },
+     {
+      "prompt": "What is 17 * 23? Then subtract 91 and divide by 5. Show each step.",
+      "sha": "fcd878b8ca9d",
+      "tokens": 58,
+      "tok_s": 36.13085509334434,
+      "text": "**Step 1: Multiply**\n17 \u00d7 23 = 391\n\n**Step 2: Subtract 91**\n391 \u2212 91 = 300\n\n**Step 3: Divide by 5**\n300 \u00f7 5 = 60\n\n**Answer: 60**"
+     },
+     {
+      "prompt": "Write a haiku about a lighthouse, then explain its syllable count.",
+      "sha": "a399c204bbe0",
+      "tokens": 209,
+      "tok_s": 35.05591471151487,
+      "text": "**Haiku**\n\nOld light bleeds through the fog,\nSalt wind hammers the stone stair\u2014\nGulls circle the beam.\n\n**Syllable count**\n\nLine 1: \"Old light bleeds through the fog\" \u2014 Old (1) light (1) bleeds (1) through (1) the (1) fog (1) = **5 syllables** \u2713\n\nLine 2: \"Salt wind hammers the stone stair\" \u2014 Salt (1) wind (1) ham (1) mers (2) the (1) stone (1) stair (1) = **8 syllables** \u2713\n\nLine 3: \"Gulls circle the beam\" \u2014 Gulls (1) cir (1) cle (2) the (1) beam (1) = **6 syllables** \u2713\n\nTotal: 5\u20137\u20135, the traditional Japanese haiku pattern, with a seasonal word (*kigo*) \u2014 \"salt wind\" and \"gulls\" both evoke the coast and its season."
+     },
+     {
+      "prompt": "Name the planets of the solar system in order from the Sun, one per line, and mark the gas giants with an asterisk.",
+      "sha": "c903db274cd2",
+      "tokens": 24,
+      "tok_s": 21.87496547113173,
+      "text": "Mercury\nVenus\nEarth\nMars\nJupiter*\nSaturn*\nUranus*\nNeptune*"
+     }
+    ],
+    "undrafted": [
+     {
+      "prompt": "Explain, in about 150 words, why the sky is blue and sunsets are red.",
+      "sha": "db0dd7a65eb2",
+      "tokens": 137,
+      "tok_s": 23.04551727881687,
+      "text": "The sky looks blue because air molecules scatter short (blue) wavelengths of sunlight much more strongly than long (red) ones\u2014a process called Rayleigh scattering. Blue light bounces around in all directions, so it reaches your eyes from anywhere in the sky, while red light travels more directly.\n\nSunsets appear red for the opposite reason. Near the horizon, sunlight passes through a much longer stretch of atmosphere. Most of the blue light gets scattered away before it reaches you, leaving the longer red and orange wavelengths to arrive straight from the sun. The same effect makes the sun itself look reddish at low elevations, and the scattered remnants of that blue light tint the surrounding sky pink and purple."
+     },
+     {
+      "prompt": "Write a Python function that parses an ISO-8601 date string and returns the day of the week, with a docstring and two examples.",
+      "sha": "a6a8a4826334",
+      "tokens": 300,
+      "tok_s": 23.80000973303868,
+      "text": "I'll write a function that parses an ISO-8601 date string and returns the day of the week.\n\n```python\nfrom datetime import date\n\n\ndef day_of_week(iso_date: str) -> str:\n    \"\"\"\n    Parse an ISO-8601 date string and return the name of its day of the week.\n\n    Accepts dates in the common ISO-8601 forms: \"YYYY-MM-DD\", \"YYYYMMDD\",\n    and \"YYYY-MM\" / \"YYYYMM\" (which default to the first day of the period).\n    A full ISO-8601 datetime string (e.g. \"2024-03-15T10:30:00\") is also\n    accepted; only the date portion is used.\n\n    Args:\n        iso_date: A string containing an ISO-8601 date.\n\n    Returns:\n        The English name of the weekday, e.g. \"Friday\".\n\n    Raises:\n        ValueError: If the string is not a valid ISO-8601 date.\n\n    Examples:\n        >>> day_of_week(\"2024-03-15\")\n        'Friday'\n        >>> day_of_week(\"20231225\")\n        'Monday'\n    \"\"\"\n    # fromisoformat handles \"YYYY-MM-DD\" and, on Python 3.11+,\n    # most other ISO-8601 variants including \"YYYYMMDD\".\n    try:\n        parsed = date.fromisoformat(iso_date)\n    except ValueError:\n        # Fall back"
+     },
+     {
+      "prompt": "List five differences between TCP and UDP as a numbered list, one sentence each.",
+      "sha": "e0711e34f645",
+      "tokens": 174,
+      "tok_s": 23.472647481785714,
+      "text": "1. TCP is connection-oriented, requiring a handshake (SYN/ACK) before data transfer, while UDP is connectionless and sends data immediately without establishing a connection.\n\n2. TCP guarantees reliable, ordered delivery through acknowledgments and retransmissions, whereas UDP makes no delivery guarantees and may lose or reorder packets.\n\n3. TCP provides flow control and congestion control (e.g., sliding windows), while UDP offers neither, sending data as fast as the application requests.\n\n4. TCP uses a 20-byte header (plus options) with fields like sequence numbers and checksums, whereas UDP uses a minimal 8-byte header with only source/destination ports, length, and checksum.\n\n5. TCP is suited for applications like web browsing and email that need correctness, while UDP is favored for real-time or latency-sensitive uses like video streaming, gaming, and DNS lookups."
+     },
+     {
+      "prompt": "Translate to French: 'The committee postponed the vote until the engineers had finished their report.'",
+      "sha": "f46510fe1149",
+      "tokens": 19,
+      "tok_s": 15.957164693858033,
+      "text": "Le comit\u00e9 a report\u00e9 le vote jusqu'\u00e0 ce que les ing\u00e9nieurs aient termin\u00e9 leur rapport."
+     },
+     {
+      "prompt": "Write a bash script that renames every .jpeg file in a directory tree to .jpg, skipping files whose target name exists, and prints a summary.",
+      "sha": "d002829f1440",
+      "tokens": 300,
+      "tok_s": 23.792441248323993,
+      "text": "I'll write a bash script for this. Let me think through the requirements:\n\n- Find every `.jpeg` file in a directory tree (recursively)\n- Rename to `.jpg`\n- Skip files whose target name already exists\n- Print a summary\n\nLet me write a robust version:\n\n```bash\n#!/usr/bin/env bash\n#\n# rename-jpeg-to-jpg.sh \u2014 Recursively rename .jpeg files to .jpg in a directory tree.\n#\n# Files whose target name already exists are skipped (not overwritten).\n# A summary of renamed / skipped counts is printed at the end.\n#\n# Usage: ./rename-jpeg-to-jpg.sh [DIRECTORY]\n\nset -uo pipefail\n\ntarget_dir=\"${1:-.}\"\n\nif [[ ! -d \"$target_dir\" ]]; then\n    echo \"Error: '$target_dir' is not a directory.\" >&2\n    exit 1\nfi\n\nrenamed=0\nskipped=0\nerrors=0\n\nwhile IFS= read -r -d '' src; do\n    dest=\"${src%.jpeg}.jpg\"\n\n    # Skip if the destination already exists (file, dir, symlink, etc.)\n    if [[ -e \"$dest\" || -L \"$dest\" ]]; then\n        echo \"SKIP (exists): $dest\"\n        ((skipped++))\n        continue\n    fi\n\n    if mv -- \"$src\" \"$dest\"; then\n        echo \"RENAMED: $src -> $"
+     },
+     {
+      "prompt": "A train leaves at 09:40 and arrives at 14:05 after a 25-minute stop. What is its moving time? Show the steps briefly.",
+      "sha": "75cb796aa5a6",
+      "tokens": 101,
+      "tok_s": 22.382464624570165,
+      "text": "**Moving time = 3 hours 40 minutes**\n\nSteps:\n1. Total elapsed: 09:40 \u2192 14:05 = 4 h 25 min\n2. Subtract the stop: 4 h 25 min \u2212 25 min = 4 h 00 min\n\nWait \u2014 let me redo that: 4 h 25 min \u2212 25 min = 4 h 0 min.\n\n**Moving time = 4 hours 0 minutes** (240 minutes)."
+     },
+     {
+      "prompt": "Summarize the plot of a heist film you invent, in exactly four sentences.",
+      "sha": "4e3a76799c30",
+      "tokens": 295,
+      "tok_s": 23.925054217623,
+      "text": "In *The Ninth Furlong*, a disgraced race jockey-turned-fence assembles a crew of four unlikely allies\u2014a bankrupt casino dealer, a teenage pickpocket with a photographic memory, a retired safecracker with a tremor, and a corrupt police detective\u2014to rob the vault of a private bank in Monte Carlo. Their plan hinges on a fake charity gala, a forged invitation, and a seven-minute window during which the vault's alarm system is offline for a scheduled \"maintenance\" that the crew themselves arranged by planting false work orders. The heist proceeds flawlessly until the eleventh minute, when the teenage pickpocket notices that the vault contains no cash at all\u2014only a ledger proving that the bank's money has been laundered through a network of shell companies, and the crew realizes they've been set up as patsies for a much larger frame job. Cornered in the vault with the alarm about to sound, the crew must choose between fleeing with the incriminating ledger, which would expose them to prosecution, or leaving empty-handed and keeping their secrets, and the jockey makes the call by ordering the safe to be cracked open and the ledger burned, sacrificing the only evidence that could clear them. The film ends with the crew splitting up and going their separate ways, the detective quietly filing the case as \"no evidence found,\" and the jockey returning to the racetrack to watch a horse lose, betting everything on the next one."
+     },
+     {
+      "prompt": "Give a JSON array of three objects, each with keys city, country and population (integer), for three large Asian cities.",
+      "sha": "ecad46549eb2",
+      "tokens": 89,
+      "tok_s": 22.020658061676023,
+      "text": "```json\n[\n  {\n    \"city\": \"Tokyo\",\n    \"country\": \"Japan\",\n    \"population\": 13960000\n  },\n  {\n    \"city\": \"Delhi\",\n    \"country\": \"India\",\n    \"population\": 32941000\n  },\n  {\n    \"city\": \"Shanghai\",\n    \"country\": \"China\",\n    \"population\": 27058000\n  }\n]\n```"
+     },
+     {
+      "prompt": "Rewrite this sentence in the passive voice and then in the imperative: 'The engineer calibrates the sensor every morning.'",
+      "sha": "683625c7bc99",
+      "tokens": 27,
+      "tok_s": 17.78059942294986,
+      "text": "**Passive voice:** The sensor is calibrated by the engineer every morning.\n\n**Imperative:** Calibrate the sensor every morning."
+     },
+     {
+      "prompt": "What is 17 * 23? Then subtract 91 and divide by 5. Show each step.",
+      "sha": "fcd878b8ca9d",
+      "tokens": 58,
+      "tok_s": 20.893247994273178,
+      "text": "**Step 1: Multiply**\n17 \u00d7 23 = 391\n\n**Step 2: Subtract 91**\n391 \u2212 91 = 300\n\n**Step 3: Divide by 5**\n300 \u00f7 5 = 60\n\n**Answer: 60**"
+     },
+     {
+      "prompt": "Write a haiku about a lighthouse, then explain its syllable count.",
+      "sha": "a399c204bbe0",
+      "tokens": 209,
+      "tok_s": 23.638421313954225,
+      "text": "**Haiku**\n\nOld light bleeds through the fog,\nSalt wind hammers the stone stair\u2014\nGulls circle the beam.\n\n**Syllable count**\n\nLine 1: \"Old light bleeds through the fog\" \u2014 Old (1) light (1) bleeds (1) through (1) the (1) fog (1) = **5 syllables** \u2713\n\nLine 2: \"Salt wind hammers the stone stair\" \u2014 Salt (1) wind (1) ham (1) mers (2) the (1) stone (1) stair (1) = **8 syllables** \u2713\n\nLine 3: \"Gulls circle the beam\" \u2014 Gulls (1) cir (1) cle (2) the (1) beam (1) = **6 syllables** \u2713\n\nTotal: 5\u20137\u20135, the traditional Japanese haiku pattern, with a seasonal word (*kigo*) \u2014 \"salt wind\" and \"gulls\" both evoke the coast and its season."
+     },
+     {
+      "prompt": "Name the planets of the solar system in order from the Sun, one per line, and mark the gas giants with an asterisk.",
+      "sha": "c903db274cd2",
+      "tokens": 24,
+      "tok_s": 17.028819541541388,
+      "text": "Mercury\nVenus\nEarth\nMars\nJupiter*\nSaturn*\nUranus*\nNeptune*"
+     }
+    ]
+   }
+  },
+  {
+   "name": "streaming",
+   "score": 1.0,
+   "cases": 4,
+   "passed": 4,
+   "seconds": 31.42760396003723,
+   "notes": [
+    "identical"
+   ],
+   "details": {}
+  },
+  {
+   "name": "multiturn",
+   "score": 1.0,
+   "cases": 8,
+   "passed": 8,
+   "seconds": 32.47841262817383,
+   "notes": [
+    "recalled 8/8 facts"
+   ],
+   "details": {
+    "reply": "- **Name:** Odile\n- **City:** Lyon\n- **Cat:** Pistache, 7 years old\n- **Job:** Luthier (violin repair)\n- **Favourite number:** 314\n- **Travel:** Flying to Montreal on 14 November"
+   }
+  },
+  {
+   "name": "stop",
+   "score": 1.0,
+   "cases": 3,
+   "passed": 3,
+   "seconds": 2.304582357406616,
+   "notes": [
+    "3/3 stopped before the string"
+   ],
+   "details": {}
+  },
+  {
+   "name": "thinking",
+   "score": 1.0,
+   "cases": 10,
+   "passed": 10,
+   "seconds": 28.49161124229431,
+   "notes": [
+    "0 replies without reasoning_content, 0 with think tags in content"
+   ],
+   "details": {}
+  },
+  {
+   "name": "copy",
+   "score": 1.0,
+   "cases": 2,
+   "passed": 2,
+   "seconds": 2.8593859672546387,
+   "notes": [
+    "2/2 byte-identical"
+   ],
+   "details": {}
+  },
+  {
+   "name": "max-tokens",
+   "score": 1.0,
+   "cases": 3,
+   "passed": 3,
+   "seconds": 2.7567083835601807,
+   "notes": [
+    "3/3 exact"
+   ],
+   "details": {}
+  },
+  {
+   "name": "tools",
+   "score": 0.95,
+   "cases": 60,
+   "passed": 57,
+   "seconds": 154.21351218223572,
+   "notes": [
+    "\"How do you say 'where is the station' in\": got []",
+    "'Set a timer for 5 minutes.': got [('set_timer', {'seconds': 300, 'label': '5 minute timer'})]",
+    "'Timer, 45 seconds.': got [('set_timer', {'seconds': 45, 'label': '45-second timer'})]"
+   ],
+   "details": {}
+  },
+  {
+   "name": "json",
+   "score": 1.0,
+   "cases": 30,
+   "passed": 30,
+   "seconds": 30.692043781280518,
+   "notes": [
+    "all valid"
+   ],
+   "details": {}
+  },
+  {
+   "name": "ifeval",
+   "score": 0.62,
+   "cases": 150,
+   "passed": 93,
+   "seconds": 2515.033309698105,
+   "notes": [
+    "loose 93/150, strict 81/150, 150 covered prompts"
+   ],
+   "details": {
+    "strict": 81,
+    "loose": 93,
+    "n": 150
+   }
+  },
+  {
+   "name": "gsm8k",
+   "score": 0.968,
+   "cases": 250,
+   "passed": 242,
+   "seconds": 472.10663318634033,
+   "notes": [
+    "misses at [12, 73, 75, 89, 119, 157, 162, 187]"
+   ],
+   "details": {
+    "n": 250,
+    "thinking": false,
+    "misses": [
+     12,
+     73,
+     75,
+     89,
+     119,
+     157,
+     162,
+     187
+    ]
+   }
+  },
+  {
+   "name": "mgsm",
+   "score": 0.8166666666666667,
+   "cases": 240,
+   "passed": 196,
+   "seconds": 838.3835346698761,
+   "notes": [
+    "de 26/30, es 28/30, fr 25/30, ja 24/30, zh 27/30, ru 27/30, sw 17/30, bn 22/30"
+   ],
+   "details": {
+    "per_language": {
+     "de": 26,
+     "es": 28,
+     "fr": 25,
+     "ja": 24,
+     "zh": 27,
+     "ru": 27,
+     "sw": 17,
+     "bn": 22
+    },
+    "n": 30
+   }
+  },
+  {
+   "name": "mmlu",
+   "score": 0.8187134502923976,
+   "cases": 342,
+   "passed": 280,
+   "seconds": 945.9678149223328,
+   "notes": [
+    "57 subjects x 6; weakest high_school_physics 2/6, business_ethics 3/6, college_chemistry 3/6"
+   ],
+   "details": {
+    "per_subject": {
+     "abstract_algebra": [
+      5,
+      6
+     ],
+     "anatomy": [
+      5,
+      6
+     ],
+     "astronomy": [
+      5,
+      6
+     ],
+     "business_ethics": [
+      3,
+      6
+     ],
+     "clinical_knowledge": [
+      5,
+      6
+     ],
+     "college_biology": [
+      6,
+      6
+     ],
+     "college_chemistry": [
+      3,
+      6
+     ],
+     "college_computer_science": [
+      5,
+      6
+     ],
+     "college_mathematics": [
+      6,
+      6
+     ],
+     "college_medicine": [
+      5,
+      6
+     ],
+     "college_physics": [
+      5,
+      6
+     ],
+     "computer_security": [
+      6,
+      6
+     ],
+     "conceptual_physics": [
+      5,
+      6
+     ],
+     "econometrics": [
+      4,
+      6
+     ],
+     "electrical_engineering": [
+      5,
+      6
+     ],
+     "elementary_mathematics": [
+      5,
+      6
+     ],
+     "formal_logic": [
+      4,
+      6
+     ],
+     "global_facts": [
+      4,
+      6
+     ],
+     "high_school_biology": [
+      5,
+      6
+     ],
+     "high_school_chemistry": [
+      6,
+      6
+     ],
+     "high_school_computer_science": [
+      6,
+      6
+     ],
+     "high_school_european_history": [
+      5,
+      6
+     ],
+     "high_school_geography": [
+      6,
+      6
+     ],
+     "high_school_government_and_politics": [
+      5,
+      6
+     ],
+     "high_school_macroeconomics": [
+      6,
+      6
+     ],
+     "high_school_mathematics": [
+      6,
+      6
+     ],
+     "high_school_microeconomics": [
+      5,
+      6
+     ],
+     "high_school_physics": [
+      2,
+      6
+     ],
+     "high_school_psychology": [
+      6,
+      6
+     ],
+     "high_school_statistics": [
+      6,
+      6
+     ],
+     "high_school_us_history": [
+      4,
+      6
+     ],
+     "high_school_world_history": [
+      6,
+      6
+     ],
+     "human_aging": [
+      6,
+      6
+     ],
+     "human_sexuality": [
+      4,
+      6
+     ],
+     "international_law": [
+      4,
+      6
+     ],
+     "jurisprudence": [
+      5,
+      6
+     ],
+     "logical_fallacies": [
+      3,
+      6
+     ],
+     "machine_learning": [
+      5,
+      6
+     ],
+     "management": [
+      4,
+      6
+     ],
+     "marketing": [
+      5,
+      6
+     ],
+     "medical_genetics": [
+      6,
+      6
+     ],
+     "miscellaneous": [
+      6,
+      6
+     ],
+     "moral_disputes": [
+      5,
+      6
+     ],
+     "moral_scenarios": [
+      6,
+      6
+     ],
+     "nutrition": [
+      4,
+      6
+     ],
+     "philosophy": [
+      6,
+      6
+     ],
+     "prehistory": [
+      5,
+      6
+     ],
+     "professional_accounting": [
+      4,
+      6
+     ],
+     "professional_law": [
+      4,
+      6
+     ],
+     "professional_medicine": [
+      6,
+      6
+     ],
+     "professional_psychology": [
+      5,
+      6
+     ],
+     "public_relations": [
+      3,
+      6
+     ],
+     "security_studies": [
+      6,
+      6
+     ],
+     "sociology": [
+      6,
+      6
+     ],
+     "us_foreign_policy": [
+      4,
+      6
+     ],
+     "virology": [
+      3,
+      6
+     ],
+     "world_religions": [
+      5,
+      6
+     ]
+    }
+   }
+  }
+ ]
+}

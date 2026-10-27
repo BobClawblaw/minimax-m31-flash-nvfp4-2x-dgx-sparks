@@ -1,0 +1,239 @@
+{
+ "meta": {
+  "model_dir": "MiniMax-M3.1-Flash-mix-dev (the release with 3-bit experts beside the NVFP4 ones on every MoE layer: minimax_m3_nvfp4_mix.py --keep-nvfp4)",
+  "tokens": 2406,
+  "tail_rows": 1000,
+  "layers": 60,
+  "wall_s": 1224.649348974228,
+  "sanity": {
+   "mxfp8": 0.026554381474852562,
+   "nvfp4": 0.09507466107606888,
+   "nvfp4_grid_roundtrip_maxerr": 0.0,
+   "mxfp8_pow2_roundtrip_maxerr": 0.0
+  },
+  "nvfp4_layers": [
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   31,
+   49,
+   52,
+   57,
+   59
+  ],
+  "affine3_layers": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   30,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38,
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46,
+   47,
+   48,
+   50,
+   51,
+   53,
+   54,
+   55,
+   56,
+   58
+  ],
+  "variants": {
+   "exact": {
+    "experts": "nv",
+    "nvfp4_dense": [],
+    "head": "bf16"
+   },
+   "served": {
+    "experts": "served",
+    "nvfp4_dense": [],
+    "head": "bf16"
+   },
+   "served+head8": {
+    "experts": "served",
+    "nvfp4_dense": [],
+    "head": "mx8"
+   },
+   "served+head4": {
+    "experts": "served",
+    "nvfp4_dense": [],
+    "head": "nv4"
+   },
+   "served+qo4": {
+    "experts": "served",
+    "nvfp4_dense": [
+     "q",
+     "o"
+    ],
+    "head": "bf16"
+   },
+   "served+mlp4": {
+    "experts": "served",
+    "nvfp4_dense": [
+     "gate_w",
+     "up_w",
+     "down_w",
+     "s_gate",
+     "s_up",
+     "s_down"
+    ],
+    "head": "bf16"
+   },
+   "served+kvi4": {
+    "experts": "served",
+    "nvfp4_dense": [
+     "k",
+     "v",
+     "iq",
+     "ik"
+    ],
+    "head": "bf16"
+   },
+   "served+dense4": {
+    "experts": "served",
+    "nvfp4_dense": [
+     "q",
+     "o",
+     "gate_w",
+     "up_w",
+     "down_w",
+     "s_gate",
+     "s_up",
+     "s_down",
+     "k",
+     "v",
+     "iq",
+     "ik"
+    ],
+    "head": "mx8"
+   },
+   "all3": {
+    "experts": "aff",
+    "nvfp4_dense": [],
+    "head": "bf16"
+   }
+  }
+ },
+ "metrics": {
+  "exact": {
+   "kl_exact_all": 0.0,
+   "top1_all": 100.0,
+   "kl_exact_all_p99": 0.0,
+   "kl_exact_tail": 0.0,
+   "top1_tail": 100.0,
+   "kl_exact_tail_p99": 0.0
+  },
+  "served": {
+   "kl_exact_all": 0.1054549291729927,
+   "top1_all": 88.57024312019348,
+   "kl_exact_all_p99": 1.0808961391448975,
+   "kl_exact_tail": 0.1204286590218544,
+   "top1_tail": 88.90000581741333,
+   "kl_exact_tail_p99": 1.162294864654541
+  },
+  "served+head8": {
+   "kl_exact_all": 0.10621076822280884,
+   "top1_all": 88.19617629051208,
+   "kl_served_all": 0.0009289245936088264,
+   "kl_exact_all_p99": 1.0923347473144531,
+   "kl_exact_tail": 0.12155134230852127,
+   "top1_tail": 88.40000629425049,
+   "kl_served_tail": 0.0007714656530879438,
+   "kl_exact_tail_p99": 1.1569658517837524
+  },
+  "served+head4": {
+   "kl_exact_all": 0.1110168918967247,
+   "top1_all": 88.11305165290833,
+   "kl_served_all": 0.00727753434330225,
+   "kl_exact_all_p99": 1.1375025510787964,
+   "kl_exact_tail": 0.1228577196598053,
+   "top1_tail": 88.80000710487366,
+   "kl_served_tail": 0.0052915215492248535,
+   "kl_exact_tail_p99": 1.5394231081008911
+  },
+  "served+qo4": {
+   "kl_exact_all": 0.13890892267227173,
+   "top1_all": 86.94929480552673,
+   "kl_served_all": 0.06288836151361465,
+   "kl_exact_all_p99": 1.699612021446228,
+   "kl_exact_tail": 0.14577782154083252,
+   "top1_tail": 87.40000128746033,
+   "kl_served_tail": 0.059881482273340225,
+   "kl_exact_tail_p99": 1.725001573562622
+  },
+  "served+mlp4": {
+   "kl_exact_all": 0.12104116380214691,
+   "top1_all": 87.61429786682129,
+   "kl_served_all": 0.0414125882089138,
+   "kl_exact_all_p99": 1.2662034034729004,
+   "kl_exact_tail": 0.13504835963249207,
+   "top1_tail": 88.20000290870667,
+   "kl_served_tail": 0.04170888662338257,
+   "kl_exact_tail_p99": 1.445181131362915
+  },
+  "served+kvi4": {
+   "kl_exact_all": 0.11229991912841797,
+   "top1_all": 87.86367774009705,
+   "kl_served_all": 0.027444271370768547,
+   "kl_exact_all_p99": 1.2121771574020386,
+   "kl_exact_tail": 0.1302265226840973,
+   "top1_tail": 87.90000677108765,
+   "kl_served_tail": 0.029018152505159378,
+   "kl_exact_tail_p99": 1.6967098712921143
+  },
+  "served+dense4": {
+   "kl_exact_all": 0.15947426855564117,
+   "top1_all": 86.94929480552673,
+   "kl_served_all": 0.09135273844003677,
+   "kl_exact_all_p99": 1.8556263446807861,
+   "kl_exact_tail": 0.171632319688797,
+   "top1_tail": 87.90000677108765,
+   "kl_served_tail": 0.08960933238267899,
+   "kl_exact_tail_p99": 2.053504467010498
+  },
+  "all3": {
+   "kl_exact_all": 0.1410893201828003,
+   "top1_all": 85.91022491455078,
+   "kl_served_all": 0.06531166285276413,
+   "kl_exact_all_p99": 1.5297178030014038,
+   "kl_exact_tail": 0.14791281521320343,
+   "top1_tail": 87.20000386238098,
+   "kl_served_tail": 0.05998826026916504,
+   "kl_exact_tail_p99": 1.691801905632019
+  }
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "url": "http://127.0.0.1:8897",
+ "model": "MiniMax-M3.1-Flash",
+ "results": [
+  {
+   "name": "gsm8k",
+   "score": 0.968,
+   "cases": 250,
+   "passed": 242,
+   "seconds": 1056.610503435135,
+   "notes": [
+    "misses at [12, 73, 85, 93, 100, 119, 154, 241]"
+   ],
+   "details": {
+    "n": 250,
+    "thinking": true,
+    "max_tokens": 29696,
+    "misses": [
+     12,
+     73,
+     85,
+     93,
+     100,
+     119,
+     154,
+     241
+    ],
+    "truncated": 0
+   }
+  }
+ ]
+}

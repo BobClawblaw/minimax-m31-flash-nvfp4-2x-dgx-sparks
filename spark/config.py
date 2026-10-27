@@ -17,6 +17,7 @@ class Settings:
     source_dir: str = ""
     model_dir: str = ""
     nvfp4_layers: str = ""
+    dense_fp4: bool = True  # convert with --dense-fp4: NVFP4 projections, MXFP8 head
     tensorfold_src: str = ""
     tensorfold_repo: str = ""
     tensorfold_branch: str = ""
@@ -35,7 +36,7 @@ class Settings:
     host: str = "0.0.0.0"
     port: int = 8897
     context: int = 32768
-    parallel: int = 2
+    parallel: int = 3
     drafts: bool = True
     vision: bool = True
     vision_image_tokens: int = 4096
@@ -57,7 +58,8 @@ class Settings:
 
     @property
     def model(self) -> Path:
-        return self.path(self.model_dir or "~/models/MiniMax-M3.1-Flash-nvfp4-mix")
+        return self.path(self.model_dir or ("~/models/MiniMax-M3.1-Flash-nvfp4-dense4" if self.dense_fp4
+                                            else "~/models/MiniMax-M3.1-Flash-nvfp4-mix"))
 
     @property
     def build(self) -> Path:

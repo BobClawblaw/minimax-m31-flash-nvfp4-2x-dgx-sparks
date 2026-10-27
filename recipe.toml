@@ -7,16 +7,19 @@ source_repo = "MiniMaxAI/MiniMax-M3.1-Flash"
 source_revision = "54e4e69dfc452b1e94a426c24a4fdeeaa8e3ad5e"
 served_name = "MiniMax-M3.1-Flash"
 source_dir = ""                  # empty: ~/models/MiniMax-M3.1-Flash (the release as downloaded)
-model_dir = ""                   # empty: ~/models/MiniMax-M3.1-Flash-nvfp4-mix (the converted folder, on both nodes)
+model_dir = ""                   # empty: ~/models/MiniMax-M3.1-Flash-nvfp4-dense4 (the converted folder, on both nodes)
 # the MoE layers whose experts stay NVFP4 as released; the other 42 take the 3-bit refit (README: the mix)
 nvfp4_layers = "20-29,31,49,52,57,59"
+# the decoder's MXFP8 projections converted to NVFP4 and the bf16 head to MXFP8, for speed at a measured cost
+# (README: the dense FP4 conversion); false converts them as released, the master recipe's checkpoint
+dense_fp4 = true
 
 [engine]
 # TensorFold's native CUDA engine: a worktree of tensorfold_src at tensorfold_sha, built by `python3 -m spark build`
 tensorfold_src = "~/TensorFold"
 tensorfold_repo = "https://github.com/BobClawblaw/TensorFold"
-tensorfold_branch = "minimax-m3-cuda"
-tensorfold_sha = "1d559dd44ead55385ec8913ae79731c3e69332cc"           # the pinned commit (README: the engine)
+tensorfold_branch = "minimax-m3-fp4"
+tensorfold_sha = "bcbb2e3447dec34f1d14f49540d85dbb16e93c95"           # the pinned commit (README: the engine)
 binary_dir = ""                  # a built zig-out/native to serve instead (development; the harness records its hash)
 zig = "zig"                      # Zig 0.17.0
 xgrammar = ""                    # an xgrammar v0.2.8 checkout with submodules (structured output, forced tools)
@@ -35,7 +38,7 @@ nccl_channels = 16
 host = "0.0.0.0"
 port = 8897
 context = 32768                  # a stream's window
-parallel = 2                     # streams decoded together
+parallel = 3                     # streams decoded together (three fit at 32k beside the dense FP4 weights)
 drafts = true                    # the release's DSpark head drafts each stream's block (greedy replies are identical with drafts off)
 vision = true
 vision_image_tokens = 4096       # image tokens a request holds in all (an image takes at most 576)

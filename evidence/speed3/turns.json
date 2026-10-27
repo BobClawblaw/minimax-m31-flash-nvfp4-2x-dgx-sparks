@@ -1,0 +1,102 @@
+{
+ "turn1": {
+  "status": 200,
+  "text": "Three rivers in Europe:\n\n1. **Danube** \u2014 flows through ten countries, from Germany to the Black Sea\n2. **Rhine** \u2014 rises in the Swiss Alps and empties into the North Sea\n3. **Vol",
+  "ttft": 4.807,
+  "ttft_any": 4.807,
+  "usage": {
+   "prompt_tokens": 4698,
+   "completion_tokens": 48,
+   "total_tokens": 4746,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 6.399,
+  "finish": "length",
+  "tool_calls": null
+ },
+ "turn2": {
+  "status": 200,
+  "text": "The **Danube** is the longest of the three, at roughly **2,850 km (1,770 miles)**.\n\nFor comparison:\n- **Danube** \u2014 ~2,850 km\n- **Volga** \u2014 ~",
+  "ttft": 0.907,
+  "ttft_any": 0.907,
+  "usage": {
+   "prompt_tokens": 4763,
+   "completion_tokens": 48,
+   "total_tokens": 4811,
+   "prompt_tokens_details": {
+    "cached_tokens": 4096
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 2.558,
+  "finish": "length",
+  "tool_calls": null
+ },
+ "turn3": {
+  "status": 200,
+  "text": "The **Rhine** is the shortest of the three, at roughly **1,230 km (765 miles)**.\n\nFor comparison:\n- **Danube** \u2014 ~2,850 km\n- **Volga** \u2014 ~3,",
+  "ttft": 0.965,
+  "ttft_any": 0.965,
+  "usage": {
+   "prompt_tokens": 4826,
+   "completion_tokens": 48,
+   "total_tokens": 4874,
+   "prompt_tokens_details": {
+    "cached_tokens": 4096
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 1.923,
+  "finish": "length",
+  "tool_calls": null
+ },
+ "turn3_again": {
+  "status": 200,
+  "text": "The **Rhine** is the shortest of the three, at roughly **1,230 km (765 miles)**.\n\nFor comparison:\n- **Danube** \u2014 ~2,850 km\n- **Volga** \u2014 ~3,",
+  "ttft": 0.966,
+  "ttft_any": 0.966,
+  "usage": {
+   "prompt_tokens": 4826,
+   "completion_tokens": 48,
+   "total_tokens": 4874,
+   "prompt_tokens_details": {
+    "cached_tokens": 4096
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 2.016,
+  "finish": "length",
+  "tool_calls": null
+ },
+ "turn3_cold": {
+  "status": 200,
+  "text": "The **Rhine** is the shortest of the three, at roughly **1,230 km (765 miles)**.\n\nFor comparison:\n- **Danube** \u2014 ~2,850 km\n- **Volga** \u2014 ~3,",
+  "ttft": 4.909,
+  "ttft_any": 4.909,
+  "usage": {
+   "prompt_tokens": 4826,
+   "completion_tokens": 48,
+   "total_tokens": 4874,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 5.907,
+  "finish": "length",
+  "tool_calls": null
+ }
+}
